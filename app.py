@@ -84,8 +84,8 @@ class Chatbot:
     def insertConsent(self,sessionId,fullname,uid,sonaid,conditionId):
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
-        username = 'mumaadmin'
-        password = 'Mum@ch@t'
+        username = 'it-dci'
+        password = 'Revanth1@#'
         driver= '{ODBC Driver 17 for SQL Server}'
         #sessionId = ''
         conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
@@ -110,15 +110,15 @@ class Chatbot:
             else:
                 sessionId = 0
         except:
-            print(error)
+            print('error')
             conn.close()
         return sessionId
 
     def updateMatrixResult(self,sessionId,workGrid):
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
-        username = 'mumaadmin'
-        password = 'Mum@ch@t'
+        username = 'it-dci'
+        password = 'Revanth1@#'
         driver= '{ODBC Driver 17 for SQL Server}'
         conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
         cursor = conn.cursor()
@@ -131,7 +131,7 @@ class Chatbot:
             conn.commit()
             conn.close()
         except:
-            print(error)
+            print('error')
             conn.close()
         return sessionId
 
@@ -140,8 +140,8 @@ class Chatbot:
         #print("Transaction")
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
-        username = 'mumaadmin'
-        password = 'Mum@ch@t'
+        username = 'it-dci'
+        password = 'Revanth1@#'
         driver= '{ODBC Driver 17 for SQL Server}'
         #sessionId = ''
         conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
@@ -174,8 +174,8 @@ class Chatbot:
         #print("Matrix Result")
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
-        username = 'mumaadmin'
-        password = 'Mum@ch@t'
+        username = 'it-dci'
+        password = 'Revanth1@#'
         driver= '{ODBC Driver 17 for SQL Server}'
         #sessionId = ''
         conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
@@ -197,8 +197,8 @@ class Chatbot:
     def getMatrixResult(self,recordId):
         server = 'mumachatserver.database.windows.net'
         database = 'mumachatdb'
-        username = 'mumaadmin'
-        password = 'Mum@ch@t'
+        username = 'it-dci'
+        password = 'Revanth1@#'
         driver= '{ODBC Driver 17 for SQL Server}'
         #sessionId = ''
         row = ''
@@ -435,6 +435,7 @@ def getRedundantClueById():
 
 if __name__ == "__main__":
     try:
-        app.run(host='0.0.0.0',port=5001)
+        app.run(host='0.0.0.0',port=5000)
+        app.debug=True
     finally:
         print("Exit")
