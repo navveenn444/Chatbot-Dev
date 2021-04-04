@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     if (localStorage.getItem("sessionId") == "" || localStorage.getItem("sessionId") == null ||
         localStorage.getItem("condition") == "" || localStorage.getItem("condition") == null
-        || localStorage.getItem("condition") != window.location.href.split('/').pop()) {
+        ) {
         window.location.replace(window.location.origin)
     }
     else {
@@ -493,7 +493,7 @@ $(document).ready(function () {
                             ////console.log(sessionDictData)
                             sessionDictData['Network Architect'] = dataList
                             isUsed = true
-                        }
+                        } 
                         else {
                             if (dataList.length != 0) {
                                 var id = dataList.shift()
