@@ -239,14 +239,17 @@ chatbot = Chatbot()
 
 @app.route('/', defaults={'report': False})
 def consent(report=False):
-    #print(request.args['id'])
+    #print("hit")
     report = False
     if 'report' in request.args:
         report = request.args['report'].lower()
         print(report)
+        #print("hitmanif1")
     if report and report == "true":
+        #print("hitmanif2")
         return render_template("report.html")
     else:
+        #print("hitmanif3")
         return render_template("consent.html")
 
 @app.route('/getSession')
@@ -270,6 +273,7 @@ def getSession():
         allowedLimit = json.load(json_data)
     #print(allowedLimit)
     availableConditions = [condition[0] for condition in list(allowedLimit.items()) if condition[1] !=0] 
+    print(availableConditions)
     if len(availableConditions) != 0:
         randomCondition = random.choice(availableConditions)
         currentLimit = allowedLimit[randomCondition]
