@@ -53,7 +53,7 @@ $(document).ready(function () {
 
         var name = $('#participantFullName').val().trim();
         var uid = $('#participantUid').val().trim();
-        var isUidValid = true
+        var isUidValid = false
         var isAllValid = false
         var option = $("input[type=radio][name=optradio]:checked").val()
         
@@ -61,9 +61,9 @@ $(document).ready(function () {
             if (!isAllValid) {
                 var isnameAvailable = false
                 var isuidAvailable = false
-                if (uid.length > 0) {
+                if (uid.length == 8) {
                     for (var i = 0; i < uid.length; i++) {
-                        if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57) {
+                        if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57 ) {
                             isUidValid = true
                         }
                         else {
