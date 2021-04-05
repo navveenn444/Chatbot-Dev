@@ -34,10 +34,10 @@ $(document).ready(function () {
             6: "HLH",
             7: "HHL",
             8: "HHH",
-            '9-hh': "HHH",
-            '10-hl': "HLH",
-            '11-lh': "LHH",
-            '12-ll': "LLH"
+            9: "HHH",
+            10: "HLH",
+            11: "LHH",
+            12: "LLH"
         }
         ////console.log(window.location.href.split('/'))
         var condition = window.location.href.split('/').pop()
