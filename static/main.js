@@ -33,11 +33,7 @@ $(document).ready(function () {
             5: "HLL",
             6: "HLH",
             7: "HHL",
-            8: "HHH",
-            9: "HHH",
-            10: "HLH",
-            11: "LHH",
-            12: "LLH"
+            8: "HHH"
         }
         ////console.log(window.location.href.split('/'))
         var condition = window.location.href.split('/').pop()
