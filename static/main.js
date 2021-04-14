@@ -27,12 +27,12 @@ $(document).ready(function () {
     function initialDataSetup() {
         var conditionDict = {
             1: "LLL",
-            2: "LLH",
+            2: "HLL",
             3: "LHL",
-            4: "LHH",
-            5: "HLL",
+            4: "HHL",
+            5: "LLH",
             6: "HLH",
-            7: "HHL",
+            7: "LHH",
             8: "HHH"
         }
         ////console.log(window.location.href.split('/'))
