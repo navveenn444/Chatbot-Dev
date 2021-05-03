@@ -36,7 +36,7 @@ $(document).ready(function () {
                     $("#uidValidError").hide()
                 }
                 else {
-                    $("#uidValidError").show()
+                    $("#uidValidError").hide()
                     break;
                 }
             }
@@ -53,7 +53,9 @@ $(document).ready(function () {
 
         var name = $('#participantFullName').val().trim();
         var uid = $('#participantUid').val().trim();
-        var isUidValid = false
+        console.log("participant", $('#participantUid'))
+        console.log("uid", uid)
+        var isUidValid = true
         var isAllValid = false
         var option = $("input[type=radio][name=optradio]:checked").val()
         
@@ -67,7 +69,7 @@ $(document).ready(function () {
                             isUidValid = true
                         }
                         else {
-                            isUidValid = false;
+                            isUidValid = true;
                             break;
                         }
                     }
@@ -119,7 +121,7 @@ $(document).ready(function () {
                     },
                     type: 'GET',
                     success: function (response) {
-                        //console.log(response)
+                        console.log(response)
                         if (response['condition'] == 0) {
                             alert("Contact Administrator. Resetting the limit is required")
                         }
@@ -131,6 +133,7 @@ $(document).ready(function () {
                             localStorage.setItem("condition", response['condition']);
                             //localStorage.setItem("sona_id", window.location.href.split('=').pop())
                             localStorage.setItem("sona_id", '0000')
+                            localStorage.setItem("uid", response['uid'])
                             window.location.replace(window.location.href.split('?')[0] + response['condition'])
                             
                         }

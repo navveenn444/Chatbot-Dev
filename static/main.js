@@ -29,7 +29,7 @@ $(document).ready(function () {
             1: "LLL",
             2: "HLL",
             3: "LHL",
-            4: "HHL",
+            4: "HHHC",
             5: "LLH",
             6: "HLH",
             7: "LHH",
@@ -1342,7 +1342,12 @@ $(document).ready(function () {
 
             //alert("Task Completed. Click OK. Page will refresh in 3 seconds")
             //window.setTimeout(function () { location.reload() }, 3000)
-            window.location.replace("https://usf.az1.qualtrics.com/jfe/form/SV_bjSxk2rNGebGUi9")
+            let cond=Number(window.location.pathname.split("/")[1])
+            if (cond<5){
+            window.location.replace("https://usf.az1.qualtrics.com/jfe/form/SV_bjSxk2rNGebGUi9")}
+            else{
+                window.location.replace("https://www.google.com")
+            }
             localStorage.clear()
         }
 
@@ -1472,7 +1477,7 @@ $(document).ready(function () {
 
 
 
-        if (($('#condition').val() == 'HHL' || $('#condition').val() == 'HHH') && response["topic"] == 'Introduction' && response["index"] == "2") {
+        if (($('#condition').val() == 'HHHC' || $('#condition').val() == 'HHH') && response["topic"] == 'Introduction' && response["index"] == "2") {
             $("#userMessage").show();
             $('#userMessage').focus()
             $('#userInputType').val("name");
@@ -1487,9 +1492,9 @@ $(document).ready(function () {
             $("#userMessage").hide();
             $('#userInputType').val("");
         }
-        else if (($('#condition').val() == 'HHL') && response["topic"] == 'Tutorial' && response["index"] == "13"
+        else if (($('#condition').val() == 'HHHC') && response["topic"] == 'Tutorial' && response["index"] == "13"
             || ($('#condition').val() == 'HHH') && response["topic"] == 'Tutorial' && response["index"] == "21"
-            || ($('#condition').val() == 'HHL') && response["topic"] == 'Conclusion' && response["index"] == "1"
+            || ($('#condition').val() == 'HHHC') && response["topic"] == 'Conclusion' && response["index"] == "1"
             || ($('#condition').val() == 'HHH') && response["topic"] == 'Conclusion' && response["index"] == "1") {
             var msgs = message.split("[Name]");
 
@@ -1954,7 +1959,8 @@ $(document).ready(function () {
                     'matrixDict': JSON.stringify(result),
                     'workGrid':'',
                     'usedHints': usedHints,
-                    'sonaid': localStorage.getItem("sona_id")
+                    'sonaid': localStorage.getItem("sona_id"),
+                    'uid' : localStorage.getItem("uid")
                 }
                 //console.log(ajaxData)
                 $.ajax({
