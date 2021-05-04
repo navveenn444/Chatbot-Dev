@@ -26,14 +26,14 @@ $(document).ready(function () {
     
     function initialDataSetup() {
         var conditionDict = {
-            1: "LLL",
-            2: "HLL",
-            3: "LHL",
-            4: "HHHC",
-            5: "LLH",
-            6: "HLH",
-            7: "LHH",
-            8: "HHH"
+            "LLL": "5",
+            "HLL": "6",
+            "LHL": "7",
+            "HHL": "8",
+            "LHH": "3",
+            "HHH": "1",
+            "HLH": "2",
+            "LLH": "4"
         }
         ////console.log(window.location.href.split('/'))
         var condition = window.location.href.split('/').pop()
@@ -1477,7 +1477,7 @@ $(document).ready(function () {
 
 
 
-        if (($('#condition').val() == 'HHHC' || $('#condition').val() == 'HHH') && response["topic"] == 'Introduction' && response["index"] == "2") {
+        if (($('#condition').val() == 'HHL' || $('#condition').val() == 'HHH') && response["topic"] == 'Introduction' && response["index"] == "2") {
             $("#userMessage").show();
             $('#userMessage').focus()
             $('#userInputType').val("name");
@@ -1492,9 +1492,9 @@ $(document).ready(function () {
             $("#userMessage").hide();
             $('#userInputType').val("");
         }
-        else if (($('#condition').val() == 'HHHC') && response["topic"] == 'Tutorial' && response["index"] == "13"
+        else if (($('#condition').val() == 'HHL') && response["topic"] == 'Tutorial' && response["index"] == "13"
             || ($('#condition').val() == 'HHH') && response["topic"] == 'Tutorial' && response["index"] == "21"
-            || ($('#condition').val() == 'HHHC') && response["topic"] == 'Conclusion' && response["index"] == "1"
+            || ($('#condition').val() == 'HHL') && response["topic"] == 'Conclusion' && response["index"] == "1"
             || ($('#condition').val() == 'HHH') && response["topic"] == 'Conclusion' && response["index"] == "1") {
             var msgs = message.split("[Name]");
 
