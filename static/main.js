@@ -1,5 +1,5 @@
 var jsonData = ''
-var condition = 'LLL'
+var condition = 'HHHC'
 var tutorialMsgs = []
 var triggerEnterKeyEvent = true
 var sessionDictData = {}
@@ -26,14 +26,14 @@ $(document).ready(function () {
     
     function initialDataSetup() {
         var conditionDict = {
-            "LLL": "5",
-            "HLL": "6",
-            "LHL": "7",
-            "HHL": "8",
-            "LHH": "3",
-            "HHH": "1",
-            "HLH": "2",
-            "LLH": "4"
+            1: "HHH",
+            2: "HLH",
+            3: "LHH",
+            4: "LLH",
+            5: "HHHC",
+            6: "HLL",
+            7: "LHL",
+            8: "HHL"
         }
         ////console.log(window.location.href.split('/'))
         var condition = window.location.href.split('/').pop()
@@ -1477,7 +1477,7 @@ $(document).ready(function () {
 
 
 
-        if (($('#condition').val() == 'HHL' || $('#condition').val() == 'HHH') && response["topic"] == 'Introduction' && response["index"] == "2") {
+        if (($('#condition').val() == 'HHL' || $('#condition').val() == 'HHH'|| $('#condition').val() == 'HHHC' ) && response["topic"] == 'Introduction' && response["index"] == "2") {
             $("#userMessage").show();
             $('#userMessage').focus()
             $('#userInputType').val("name");

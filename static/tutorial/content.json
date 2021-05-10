@@ -1,141 +1,61 @@
 {
-  "LLL": {
-    "Introduction": {
-      "1": "Status: Information bot is online.",
-      "2": "The information bot will query the database to provide relevant information.",
-      "3": "This is a project  management simulation. The role of the user as project manager is to assign employees to the appropriate projects and roles based on a set of information. "
-    },
-    "Tutorial": {
-      "1": "In the following messages, an example will be described which will demonstrate how to use the information grid.",
-      "2": "Example Scenario: Four people will each be given a gift. No two people can receive the same gift and one person cannot get more than one gift",
-      "3": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img1.png'></img>",
-      "4": "In this example, James does not like videogames. This option will be eliminated by marking it with an <span style='color:red;font-weight: bold;'>X</span> (click once on the corresponding box).",
-      "5": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img2.png'></img>",
-      "6": "In this example, Ali will receive the skateboard. User will select  this option by marking it with an <span style='color:darkgreen;font-weight: bold;'>O</span> (click twice on the corresponding box).",
-      "7": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img3.png'></img>",
-      "8": "Other combinations will need to be eliminated based on previous decisions. Since Ali will be given the skateboard (and no one else can have the same gift), the skateboard options should be eliminated for everyone else. User  needs to place <span style='color:red;font-weight: bold;'>X</span>'s for the skateboard options for everyone else and for all the other gift options for Ali.",
-      "9": "The grid is to look like this: <br /><img class='grid' src='/static/images/tutorial/img4.png'></img>",
-      "10": "Thus, the information grid is used to note which combinations have been eliminated (<span style='color:red;font-weight: bold;'>X</span>) or selected (<span style='color:darkgreen;font-weight: bold;'>O</span>).",
-      "11": "The grid should only be marked if it is certain that an option should be eliminated or selected. To remove a marking, click on the selected box a third time.",
-      "12": "Status: Tutorial completed."
-    },
-    "Task Reminder": {
-      "1": "The task will now begin.",
-      "2": "Reminder: The purpose of the task is to assign each person a project role and amount of weekly project hours."
-    },
-    "Clue_Ins": {
-      "1": "Consider the following 5 major pieces of information:"
-    },
-    "Clue_End_Ins": {
-      "1": "These five clues are also available in the Project Assignment Information Tab on the top left of the page."
-    },
-    "Redundant_Ins": {
-      "1": "Some more information to make the decision is provided below. User to click 'Next' each time to see new block of information."
-    },
-    "Redundant": {
-      "1": {
-        "1": {
-          "clue": "Alex does not work for 6 hours a week."
-        },
-        "2": {
-          "clue": "Alex should be assigned as the Network Architect."
-        },
-        "3": {
-          "clue": "Leon does not work for 6 hours a week."
-        },
-        "4": {
-          "clue": "Leon does not work for 8 hours a week."
-        },
-        "5": {
-          "clue": "Rachel does not work for 12 hours a week."
-        }
-      },
-      "2": {
-        "6": {
-          "clue": "Rachel should be assigned as the Database Administrator."
-        },
-        "7": {
-          "clue": "Rachel should not be assigned as the Systems Analyst."
-        },
-        "8": {
-          "clue": "Tina is the Cybersecurity Specialist."
-        },
-        "9": {
-          "clue": "Tina should not be assigned as the Database Administrator."
-        },
-        "10": {
-          "clue": "The Cybersecurity Specialist works for 12 hours a week."
-        }
-      },
-      "3": {
-        "11": {
-          "clue": "The Database Administrator does not work for 10 hours a week."
-        },
-        "12": {
-          "clue": "The Database Administrator does not work for 12 hours a week."
-        },
-        "13": {
-          "clue": "The Network Architect does not work for 10 hours a week."
-        },
-        "14": {
-          "clue": "The Network Architect is not Leon."
-        },
-        "15": {
-          "clue": "The Network Architect is not Rachel."
-        }
-      },
-      "4": {
-        "16": {
-          "clue": "The Systems Analyst does not work for 6 hours a week."
-        },
-        "17": {
-          "clue": "The Systems Analyst does not work for 8 hours a week."
-        },
-        "18": {
-          "clue": "The Systems Analyst is Leon."
-        },
-        "19": {
-          "clue": "6 hours a week of work is not required of the Network Architect."
-        },
-        "20": {
-          "clue": "6 hours a week of work is required of the Database administrator."
-        }
-      },
-      "5": {
-        "21": {
-          "clue": "6 hours a week of work is required of Tina."
-        },
-        "22": {
-          "clue": "8 hours a week of work is required of Alex."
-        },
-        "23": {
-          "clue": "8 hours a week of work is required of the Network Architect."
-        },
-        "24": {
-          "clue": "10 hours a week of work is required of Leon."
-        },
-        "25": {
-          "clue": "10 hours a week of work is required of the Systems Analyst."
-        }
-      },
-      "6": {
-        "26": {
-          "clue": "12 hours a week of work is required of the Network Architect."
-        },
-        "27": {
-          "clue": "12 hours a week of work is required of Tina."
-        }
-      }
-    },
-    "Submit": {
-      "1": "Status: All available information has been provided. Final decisions may be submitted.",
-      "2": "Select the team assignments for each project member using the table:",
-      "3": "When all decisions have been made, click the 'Submit' button to enter the team assignments. This will conclude the task."
-    },
-    "Conclusion": {
-      "1": "Project assignments have been recorded. Task complete. User to click 'Next' to redirect to survey.",
-      "2": "Thank you"
-    }
+  "HHHC": {
+		"Introduction": {
+      "1": "Hello! My name is Projy the Project Management Chatbot. I will help you with your project management task today.",
+			"2": "What is your name my friend?",
+			"3": "It's jolly good to meet you, 😊",
+			"4": "Welcome to the project management simulator. This is a fun one! In this simulation you will play the  role of a project manager. But your job is smiple. It is to assign your employees to  appropriate projects and locations.",
+			"5": "So, heres the deal. Given the constraints of the project, there is only one specific role and specific number of hours that any one person can do. So there is a correct configuration. Your job is to figure that out."
+		},
+		"Tutorial": {	
+			"1": "Great! And don’t' worry! I will help you every step of the way. This is what I will do.",
+			"2": "I will provide you some basic information to start with. But I have lot more to give! :D",
+			"3": "If you want more information at any point, all you have to do is ask and I will be more than happy to guide you along!! What do you think?",
+			"4": "Before we start, I would like to give you a quick training of how to use the information grid to mark your decisions and keep track of your choices. I’ll use a running example to teach you how to use the information grid. Then you can work on the actual simulation yourself. Sounds good?",
+			"5": "Okay then! Our running example will be one where you decide to buy a gift for each of your four friends.  Each gift should be special so no one can receive the same gift or the same color of wrapping paper.",
+			"6": "The empty grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img1.png'></img>",
+			"7": "In this example, let's say James does not like videogames so you shouldn't get him any. Please eliminate this option by marking it with an <span style='color:red;font-weight: bold;'>X</span> (click once on the corresponding box).",
+			"8": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img2.png'></img>",
+			"9": "Go ahead. Click on the interactive grid to try!",
+			"10": "You also know that Ali really enjoys skating so you should get him a skateboard. Please select this option by marking it with an <span style='color:darkgreen;font-weight: bold;'>O</span> (click twice on the corresponding box).",
+			"11": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img3.png'></img>",
+			"12": "Go ahead and eliminate other options based on previous decisions on the interactive grid. Since Ali will be given the skateboard (and no one else can have the same gift), the skateboard options should be eliminated for everyone else. Please place <span style='color:red;font-weight: bold;'>X</span>'s for the skateboard options for everyone else and for all the other gift options for Ali.",
+			"13": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img4.png'></img>",
+			"14": "As you can see, the information grid is used to note which combinations you have eliminated (<span style='color:red;font-weight: bold;'>X</span>) or selected (<span style='color:darkgreen;font-weight: bold;'>O</span>).",
+			"15": "And please be careful - only mark the grid if you're certain that an option should be eliminated or selected. If you want to remove a marking, click on the selected box a third time.",
+			"16": "Let's move on and go over some useful tricks. We'll continue working on this example. I'll teach you how to use the grid to identify logical shortcuts and errors. You can continue working on the interactive grid to gain mastery over the grid.",
+			"17": "Now let's say that Louise has told you that she really does not like material gifts. Based on the given information, you can make the following assumption: You should not give Louise a gift.",
+			"18": "Let's mark the grid to reflect this new information.",
+			"19": "You should not give Louise a gift: <br /><img class='grid' src='/static/images/tutorial/img5.png'></img>",
+			"20": "All required information is present to make final decisions. Since James does not get the videogame, it goes to Maya and James gets the necklace. Mark these options on the grid to complete it. ",
+			"21": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img6.png'></img>",
+			"22": "Okay, [Name]! That concludes the tutorial. I think you're ready for the task."
+		},
+		"Task Reminder": {
+			"1": "Let's get started!",
+			"2": "And remember, your goal is to assign each candidate a project role and amount of weekly project hours."
+		},
+		"Clue_Ins": {
+			"1": "Here are 5 major pieces of information that you might want to consider. These are sufficient to make decision."
+		},
+		"Clue_End_Ins": {
+			"1": "These five clues are also available in the Project Assignment Information Tab on the top left of the page.",
+			"2": "However for your benefit I have provided some extra information."
+		},
+		"Redundant_Ins": {
+			"1": "I have categorized the information into people, roles, or number of hours.",
+			"2": "Would you like to request more information?",
+			"3": "Okay, sounds good. If you change your mind and want to make your final decisions, you can do so at any time by selecting your chosen assignments in the table and then clicking 'Submit Answer'"
+		},
+		"Submit": {
+			"1": "Okay, now that you've seen all the information I have, it's time to submit your final decisions!",
+			"2": "Please show me the team assignments for each person using the table:",
+			"3": "When all decisions have been made, click the 'Submit' button to enter the team assignments. This will conclude the task."
+		},
+		"Conclusion": {
+			"1": "Great job [Name]! You've completed the task. I appreciate all your hard work. Please click 'Next' below to proceed to answer a brief set of questions. You will be redirected to survey shortly.",
+			"2": "Thank you"
+		}
   },
   "LLH": {
     "Introduction": {
