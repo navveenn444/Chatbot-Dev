@@ -32,7 +32,7 @@ $(document).ready(function () {
             4: "LLH",
             5: "HHHC",
             6: "HLL",
-            7: "LHL",
+            7: "NHHC",
             8: "HHL"
         }
         ////console.log(window.location.href.split('/'))
@@ -1139,7 +1139,7 @@ $(document).ready(function () {
                         if (response['condition'][0] == 'L') {
                             fillLowConditionContent(response, istriggerEnterKeyEventActive, isTaskCompleted);
                         }
-                        else if (response['condition'][0] == 'H') {
+                        else if (response['condition'][0] == 'H' || response['condition'][0] == 'N') {
 
                             fillHighConditionContent(response, istriggerEnterKeyEventActive, isTaskCompleted);
                         }
@@ -1279,7 +1279,6 @@ $(document).ready(function () {
             addMessage('bot', response["condition"], message);
             message = getMatrixHtml()
             
-
         }
 
         if (response['topic'] == 'Submit' && response['index'] == "3") {
@@ -1301,7 +1300,7 @@ $(document).ready(function () {
 
 
 
-        if (($('#condition').val() == 'LHL' || $('#condition').val() == 'LHH') && response["topic"] == 'Introduction' && response["index"] == "2") {
+        if (($('#condition').val() == 'NHHC' || $('#condition').val() == 'LHH') && response["topic"] == 'Introduction' && response["index"] == "2") {
             $("#userMessage").show();
             $('#userMessage').focus()
             $('#userInputType').val("name")
@@ -1316,9 +1315,9 @@ $(document).ready(function () {
             $("#userMessage").hide();
             $('#userInputType').val("");
         }
-        else if (($('#condition').val() == 'LHL') && response["topic"] == 'Tutorial' && response["index"] == "13"
+        else if (($('#condition').val() == 'NHHC') && response["topic"] == 'Tutorial' && response["index"] == "13"
             || ($('#condition').val() == 'LHH') && response["topic"] == 'Tutorial' && response["index"] == "21"
-            || ($('#condition').val() == 'LHL') && response["topic"] == 'Conclusion' && response["index"] == "1"
+            || ($('#condition').val() == 'NHHC') && response["topic"] == 'Conclusion' && response["index"] == "1"
             || ($('#condition').val() == 'LHH') && response["topic"] == 'Conclusion' && response["index"] == "1") {
             var msgs = message.split("[Name]");
 
@@ -1452,10 +1451,25 @@ $(document).ready(function () {
             $('#clueStartTimestamp').val(seconds);
         }
 
+        if (response['topic'] == 'Submit' && response['index'] == "2" && response['condition'] == ("HHHC" || "NHHC")) {
+            message = message + '<br/><br/>'
+            addMessage('bot', response["condition"], message);
+            message = getMatrixHtml_hc()
+            print("surya manthena1")
+        }
+
+        if (response['topic'] == 'Submit' && response['index'] == "2" && response['condition'] == ("HHLC" || "NHLC")) {
+            message = message + '<br/><br/>'
+            addMessage('bot', response["condition"], message);
+            message = getMatrixHtml_lc()
+            print("surya manthena1")
+        }
+
         if (response['topic'] == 'Submit' && response['index'] == "2") {
             message = message + '<br/><br/>'
             addMessage('bot', response["condition"], message);
             message = getMatrixHtml()
+            print("surya manthena1")
         }
 
         if (response['topic'] == 'Submit' && response['index'] == "3") {
@@ -1832,6 +1846,251 @@ $(document).ready(function () {
                                 <option value='2'>Systems Analyst</option>
                                 <option value='3'>Cyber Security Specalist</option>
                                 <option value='4'>Database Administrator</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >6</option>
+                                <option value='2'>8</option>
+                                <option value='3'>10</option>
+                                <option value='4'>12</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table >
+            <div><span style='display:none;color:red;font-size:9px'>* All the values should be selected.</span></div></div >`
+        return html
+    }
+
+    function getMatrixHtml_hc() {
+        var html = ` <div id = 'matrixResult' class='table-responsive-sm' style = 'width:130%' >
+            <table class='table table-sm' >
+                <thead>
+                    <tr style='font-size: 10px;font-weight:bold;'>
+                        <th scope='col'>Team Member</th>
+                        <th scope='col'>Role</th>
+                        <th scope='col'>Pjt hrs/wk</th>
+                        <th scope='col'>Office Location/wk</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td style='font-size: 14px;font-weight:bold;'>Alex</td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >Network Architect</option>
+                                <option value='2'>Systems Analyst</option>
+                                <option value='3'>Cyber Security Specalist</option>
+                                <option value='4'>Database Administrator</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >6</option>
+                                <option value='2'>8</option>
+                                <option value='3'>10</option>
+                                <option value='4'>12</option>
+                            </select>
+                        </td>
+                        <td>
+                        <select class='form-control form-control-sm'>
+                            <option value='0'>Select</option>
+                            <option value='1' >locationA</option>
+                            <option value='2'>locationB</option>
+                            <option value='3'>locationC</option>
+                            <option value='4'>locationD</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='font-size: 14px;font-weight:bold;'>Leon</td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >Network Architect</option>
+                                <option value='2'>Systems Analyst</option>
+                                <option value='3'>Cyber Security Specalist</option>
+                                <option value='4'>Database Administrator</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >6</option>
+                                <option value='2'>8</option>
+                                <option value='3'>10</option>
+                                <option value='4'>12</option>
+                            </select>
+                        </td>
+                        <td>
+                        <select class='form-control form-control-sm'>
+                            <option value='0'>Select</option>
+                            <option value='1' >locationA</option>
+                            <option value='2'>locationB</option>
+                            <option value='3'>locationC</option>
+                            <option value='4'>locationD</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='font-size: 14px;font-weight:bold;'>Rachel</td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >Network Architect</option>
+                                <option value='2'>Systems Analyst</option>
+                                <option value='3'>Cyber Security Specalist</option>
+                                <option value='4'>Database Administrator</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >6</option>
+                                <option value='2'>8</option>
+                                <option value='3'>10</option>
+                                <option value='4'>12</option>
+                            </select>
+                        </td>
+                        <td>
+                        <select class='form-control form-control-sm'>
+                            <option value='0'>Select</option>
+                            <option value='1' >locationA</option>
+                            <option value='2'>locationB</option>
+                            <option value='3'>locationC</option>
+                            <option value='4'>locationD</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='font-size: 14px;font-weight:bold;'>Tina</td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >Network Architect</option>
+                                <option value='2'>Systems Analyst</option>
+                                <option value='3'>Cyber Security Specalist</option>
+                                <option value='4'>Database Administrator</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >6</option>
+                                <option value='2'>8</option>
+                                <option value='3'>10</option>
+                                <option value='4'>12</option>
+                            </select>
+                        </td>
+                        <td>
+                        <select class='form-control form-control-sm'>
+                            <option value='0'>Select</option>
+                            <option value='1' >locationA</option>
+                            <option value='2'>locationB</option>
+                            <option value='3'>locationC</option>
+                            <option value='4'>locationD</option>
+                        </select>
+                        </td>
+                        <tr>
+                        <td style='font-size: 14px;font-weight:bold;'>Michael</td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >Network Architect</option>
+                                <option value='2'>Systems Analyst</option>
+                                <option value='3'>Cyber Security Specalist</option>
+                                <option value='4'>Database Administrator</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >6</option>
+                                <option value='2'>8</option>
+                                <option value='3'>10</option>
+                                <option value='4'>12</option>
+                            </select>
+                        </td>
+                        <td>
+                        <select class='form-control form-control-sm'>
+                            <option value='0'>Select</option>
+                            <option value='1' >locationA</option>
+                            <option value='2'>locationB</option>
+                            <option value='3'>locationC</option>
+                            <option value='4'>locationD</option>
+                        </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table >
+            <div><span style='display:none;color:red;font-size:9px'>* All the values should be selected.</span></div></div >`
+        return html
+    }
+
+    function getMatrixHtml_lc() {
+        var html = ` <div id = 'matrixResult' class='table-responsive-sm' style = 'width:130%' >
+            <table class='table table-sm' >
+                <thead>
+                    <tr style='font-size: 10px;font-weight:bold;'>
+                        <th scope='col'>Team Member</th>
+                        <th scope='col'>Role</th>
+                        <th scope='col'>Pjt hrs/wk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style='font-size: 14px;font-weight:bold;'>Leon</td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >Network Architect</option>
+                                <option value='2'>Systems Analyst</option>
+                                <option value='3'>Cyber Security Specalist</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >6</option>
+                                <option value='2'>8</option>
+                                <option value='3'>10</option>
+                                <option value='4'>12</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='font-size: 14px;font-weight:bold;'>Rachel</td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >Network Architect</option>
+                                <option value='2'>Systems Analyst</option>
+                                <option value='3'>Cyber Security Specalist</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >6</option>
+                                <option value='2'>8</option>
+                                <option value='3'>10</option>
+                                <option value='4'>12</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='font-size: 14px;font-weight:bold;'>Tina</td>
+                        <td>
+                            <select class='form-control form-control-sm'>
+                                <option value='0'>Select</option>
+                                <option value='1' >Network Architect</option>
+                                <option value='2'>Systems Analyst</option>
+                                <option value='3'>Cyber Security Specalist</option>
                             </select>
                         </td>
                         <td>
