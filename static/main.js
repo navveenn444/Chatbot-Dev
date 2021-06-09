@@ -31,9 +31,9 @@ $(document).ready(function () {
             3: "LHH",
             4: "LLH",
             5: "HHHC",
-            6: "HLL",
+            6: "HHLC",
             7: "NHHC",
-            8: "HHL"
+            8: "NHLC"
         }
         ////console.log(window.location.href.split('/'))
         var condition = window.location.href.split('/').pop()
@@ -1300,7 +1300,7 @@ $(document).ready(function () {
 
 
 
-        if (($('#condition').val() == 'NHHC' || $('#condition').val() == 'LHH') && response["topic"] == 'Introduction' && response["index"] == "2") {
+        if (($('#condition').val() == 'HHHC' || $('#condition').val() == 'HHLC' || $('#condition').val() == 'HHH' || $('#condition').val() == 'LHH') && response["topic"] == 'Introduction' && response["index"] == "2") {
             $("#userMessage").show();
             $('#userMessage').focus()
             $('#userInputType').val("name")
@@ -1315,12 +1315,15 @@ $(document).ready(function () {
             $("#userMessage").hide();
             $('#userInputType').val("");
         }
-        else if (($('#condition').val() == 'NHHC') && response["topic"] == 'Tutorial' && response["index"] == "13"
-            || ($('#condition').val() == 'LHH') && response["topic"] == 'Tutorial' && response["index"] == "21"
+        else if (($('#condition').val() == 'HHHC') && response["topic"] == 'Tutorial' && response["index"] == "21" ||
+        ($('#condition').val() == 'HHLC') && response["topic"] == 'Tutorial' && response["index"] == "21" ||
+        ($('#condition').val() == 'HHH') && response["topic"] == 'Tutorial' && response["index"] == "21"  ||
+         ($('#condition').val() == 'LHH') && response["topic"] == 'Tutorial' && response["index"] == "21"
             || ($('#condition').val() == 'NHHC') && response["topic"] == 'Conclusion' && response["index"] == "1"
-            || ($('#condition').val() == 'LHH') && response["topic"] == 'Conclusion' && response["index"] == "1") {
+            || ($('#condition').val() == 'LHH') && response["topic"] == 'Conclusion' && response["index"] == "1"
+            || ($('#condition').val() == 'HHLC') && response["topic"] == 'Conclusion' && response["index"] == "1"
+            || ($('#condition').val() == 'HHH') && response["topic"] == 'Conclusion' && response["index"] == "1") {
             var msgs = message.split("[Name]");
-
             message = msgs[0] + $('#userName').val() + msgs[1];
 
         }
@@ -1395,7 +1398,7 @@ $(document).ready(function () {
             $("#nextButton").show()
             message = response["botResponse"][0];
         }
-        else if (response['topic'] == 'Redundant_Ins' && response['index'] == '2' && response['condition'][1] == 'H') {
+        else if (response['topic'] == 'Redundant_Ins' && response['index'] == '2' && response['condition'][0] == 'H') {
             var navItems = []
             navItems = ["Yes, I would like <br /> to request specific information.", "No, I'm ready to make <br /> my final decisions."]
             userActionBlock = buildUserActionButtonGroup(navItems, response['condition'], 'redundantConfirmation')
@@ -1405,15 +1408,16 @@ $(document).ready(function () {
             $("#nextButton").hide()
             istriggerEnterKeyEventActive = false
         }
+    
         else if ((response['topic'] == 'Redundant_Ins' && response['index'] == '3' && response['condition'][1] == 'H')) {
             sessionDictData = redundantDictData();
-            //console.log(sessionDictData)
             message = response["botResponse"][0]
             triggerEnterKeyEvent = true
             $("#nextButton").attr("disabled", false);
             $("#nextButton").show()
         }
-        else if (response['topic'] == 'Redundant_Ins' && response['index'] == '3') {
+        
+        else if (response['topic'] == 'Redundant_Ins' && response['index'] == '3'&& response['condition'][0] == 'N') {
             var navItems = []
             navItems = ["Yes, I would like <br /> to request specific information.", "No, I'm ready to make <br /> my final decisions."]            
             userActionBlock = buildUserActionButtonGroup(navItems, response['condition'], 'redundantConfirmation')
@@ -1451,25 +1455,25 @@ $(document).ready(function () {
             $('#clueStartTimestamp').val(seconds);
         }
 
-        if (response['topic'] == 'Submit' && response['index'] == "2" && response['condition'] == ("HHHC" || "NHHC")) {
-            message = message + '<br/><br/>'
-            addMessage('bot', response["condition"], message);
-            message = getMatrixHtml_hc()
-            print("surya manthena1")
-        }
-
-        if (response['topic'] == 'Submit' && response['index'] == "2" && response['condition'] == ("HHLC" || "NHLC")) {
-            message = message + '<br/><br/>'
-            addMessage('bot', response["condition"], message);
-            message = getMatrixHtml_lc()
-            print("surya manthena1")
-        }
-
-        if (response['topic'] == 'Submit' && response['index'] == "2") {
+        if (response['topic'] == 'Submit' && response['index'] == "2" && (response['condition'] == "HHHC" || response['condition'] =="NHHC")) {
             message = message + '<br/><br/>'
             addMessage('bot', response["condition"], message);
             message = getMatrixHtml()
-            print("surya manthena1")
+            
+        }
+
+        if (response['topic'] == 'Submit' && response['index'] == "2" && (response['condition'] == "HHLC" || response['condition'] =="NHLC")) {
+            message = message + '<br/><br/>'
+            addMessage('bot', response["condition"], message);
+            message = getMatrixHtml_lc()
+           
+        }
+
+        if (response['topic'] == 'Submit' && response['index'] == "2" && response['condition'] == ("HHH" || "HLH" || "LHH" || "LLH")) {
+            message = message + '<br/><br/>'
+            addMessage('bot', response["condition"], message);
+            message = getMatrixHtml()
+            
         }
 
         if (response['topic'] == 'Submit' && response['index'] == "3") {
@@ -1491,7 +1495,7 @@ $(document).ready(function () {
 
 
 
-        if (($('#condition').val() == 'HHL' || $('#condition').val() == 'HHH'|| $('#condition').val() == 'HHHC' ) && response["topic"] == 'Introduction' && response["index"] == "2") {
+        if (($('#condition').val() == 'HHL' || $('#condition').val() == 'HHH'|| $('#condition').val() == 'HHHC' || $('#condition').val() == 'HHLC' || $('#condition').val() == 'NHHC' || $('#condition').val() == 'NHLC' ) && response["topic"] == 'Introduction' && response["index"] == "2") {
             $("#userMessage").show();
             $('#userMessage').focus()
             $('#userInputType').val("name");
@@ -1506,12 +1510,14 @@ $(document).ready(function () {
             $("#userMessage").hide();
             $('#userInputType').val("");
         }
-        else if (($('#condition').val() == 'HHL') && response["topic"] == 'Tutorial' && response["index"] == "13"
-            || ($('#condition').val() == 'HHH') && response["topic"] == 'Tutorial' && response["index"] == "21"
-            || ($('#condition').val() == 'HHL') && response["topic"] == 'Conclusion' && response["index"] == "1"
+        else if (($('#condition').val() == 'HHHC') && response["topic"] == 'Tutorial' && response["index"] == "21" ||
+        ($('#condition').val() == 'HHLC') && response["topic"] == 'Tutorial' && response["index"] == "21" ||
+        ($('#condition').val() == 'HHH') && response["topic"] == 'Tutorial' && response["index"] == "21"  
+            || ($('#condition').val() == 'HHHC') && response["topic"] == 'Conclusion' && response["index"] == "1"
+            || ($('#condition').val() == 'HHLC') && response["topic"] == 'Conclusion' && response["index"] == "1"
             || ($('#condition').val() == 'HHH') && response["topic"] == 'Conclusion' && response["index"] == "1") {
             var msgs = message.split("[Name]");
-
+            
             message = msgs[0] + $('#userName').val() + msgs[1];
 
         }
