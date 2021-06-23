@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\apoli\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+    "python.pythonPath": "C:\\Users\\apoli\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "appService.defaultWebAppToDeploy": "/subscriptions/389336e3-356a-47ed-bf40-69c8b08b67a3/resourceGroups/ARG-MUMA-Chat/providers/Microsoft.Web/sites/mumachat",
+    "appService.deploySubpath": "."
 }
