@@ -1,34 +1,46 @@
 {
   "HHHC": {
+    "Person": {
+      "1": "Hello! My name is Projy the Project Management Chatbot. I will help you with your project management task today.",
+			"2": "What is your name my friend?",
+			"3": "It's jolly good to meet you, 😊",
+			"4": "Do you know what two businesspeople say to each other while closing a deal during an earthquake?",
+      "5": "It's jolly good to meet you, 😊"
+    },
 		"Introduction": {
       "1": "Hello! My name is Projy the Project Management Chatbot. I will help you with your project management task today.",
 			"2": "What is your name my friend?",
 			"3": "It's jolly good to meet you, 😊",
-			"4": "Welcome to the project management simulator. This is a fun one! In this simulation you will play the  role of a project manager. But your job is smiple. It is to assign your employees to  appropriate projects and locations.",
-			"5": "So, heres the deal. Given the constraints of the project, there is only one specific role and specific number of hours that any one person can do. So there is a correct configuration. Your job is to figure that out."
+			"4": "Do you know what two businesspeople say to each other while closing a deal during an earthquake?",
+      "5": "Let’s shake on it! 😊",
+			"6": "Welcome to the project management simulator. This is a fun one! In this simulation you will play the  role of a project manager. But your job is smiple. It is to assign your employees to  appropriate projects and locations.",
+			"7": "So, heres the deal. Given the constraints of the project, there is only one specific role and specific number of hours that any one person can do. So there is a correct configuration. Your job is to figure that out."
 		},
 		"Tutorial": {	
 			"1": "Great! And don’t' worry! I will help you every step of the way. This is what I will do.",
 			"2": "I will provide you some basic information to start with. But I have lot more to give! :D",
 			"3": "If you want more information at any point, all you have to do is ask and I will be more than happy to guide you along!! What do you think?",
 			"4": "Before we start, I would like to give you a quick training of how to use the information grid to mark your decisions and keep track of your choices. I’ll use a running example to teach you how to use the information grid. Then you can work on the actual simulation yourself. Sounds good?",
-			"5": "Okay then! Our running example will be one where you decide to buy a gift for each of your four friends.  Each gift should be special so no one can receive the same gift or the same color of wrapping paper.",
-			"6": "The empty grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img1.png'></img>",
-			"7": "In this example, let's say James does not like videogames so you shouldn't get him any. Please eliminate this option by marking it with an <span style='color:red;font-weight: bold;'>X</span> (click once on the corresponding box).",
-			"8": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img2.png'></img>",
-			"9": "Go ahead. Click on the interactive grid to try!",
-			"10": "You also know that Ali really enjoys skating so you should get him a skateboard. Please select this option by marking it with an <span style='color:darkgreen;font-weight: bold;'>O</span> (click twice on the corresponding box).",
-			"11": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img3.png'></img>",
-			"12": "You Can go ahead and eliminate other options based on previous decisions on the interactive grid. Since Ali will be given the skateboard (and no one else can have the same gift), the skateboard options should be eliminated for everyone else. Please place <span style='color:red;font-weight: bold;'>X</span>'s for the skateboard options for everyone else and for all the other gift options for Ali.",
-			"13": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img4.png'></img>",
-			"14": "As you can see, the information grid is used to note which combinations you have eliminated (<span style='color:red;font-weight: bold;'>X</span>) or selected (<span style='color:darkgreen;font-weight: bold;'>O</span>).",
-			"15": "And please be careful - only mark the grid if you're certain that an option should be eliminated or selected. If you want to remove a marking, click on the selected box a third time.",
-			"16": "Now let's say that Louise has told you that she really does not like material gifts",
-			"17": "Based on the given information, you can make the following assumption:",
-			"18": "You should not give Louise a gift: <br /><img class='grid' src='/static/images/tutorial/img5.png'></img>",
-			"19": "At this point, All required information is present to make final decisions. Since James does not get the videogame, it goes to Maya and James gets the necklace. Mark these options on the grid to complete it. ",
-			"20": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img6.png'></img>",
-			"21": "Okay, [Name]! That concludes the tutorial. I think you're ready for the task."
+			"5": "Okay then! Our running example will be one where you decide to buy a gift for each of your four friends.",
+      "6": "You do have friends, don't you? I have few friends - I try, but people just click 'close' after chatting with me 😟..",
+      "7": "Anyway, each gift should be special so no one can receive the same gift or the same color of wrapping paper. ",
+			"8": "The empty grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img1.png'></img>",
+			"9": "In this example, let's say James does not like videogames so you shouldn't get him any. Please eliminate this option by marking it with an <span style='color:red;font-weight: bold;'>X</span> (click once on the corresponding box).",
+			"10": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img2.png'></img>",
+			"11": "Go ahead. Click on the interactive grid to try!",
+			"12": "You also know that Ali really enjoys skating so you should get him a skateboard. Please select this option by marking it with an <span style='color:darkgreen;font-weight: bold;'>O</span> (click twice on the corresponding box).",
+			"13": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img3.png'></img>",
+			"14": "You Can go ahead and eliminate other options based on previous decisions on the interactive grid. Since Ali will be given the skateboard (and no one else can have the same gift), the skateboard options should be eliminated for everyone else. Please place <span style='color:red;font-weight: bold;'>X</span>'s for the skateboard options for everyone else and for all the other gift options for Ali.",
+			"15": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img4.png'></img>",
+			"16": "As you can see, the information grid is used to note which combinations you have eliminated (<span style='color:red;font-weight: bold;'>X</span>) or selected (<span style='color:darkgreen;font-weight: bold;'>O</span>).",
+			"17": "And please be careful - only mark the grid if you're certain that an option should be eliminated or selected. If you want to remove a marking, click on the selected box a third time.",
+			"18": "Now let's say that Louise has told you that she really does not like material gifts",
+			"19": "Based on the given information, you can make the following assumption:",
+			"20": "You should not give Louise a gift: <br /><img class='grid' src='/static/images/tutorial/img5.png'></img>",
+			"21": "At this point, All required information is present to make final decisions. Since James does not get the videogame, it goes to Maya and James gets the necklace. Mark these options on the grid to complete it. ",
+			"22": "The grid should look like this: <br /><img class='grid' src='/static/images/tutorial/img6.png'></img>",
+			"23": "Okay, [Name]! That concludes the tutorial. I think you're ready for the task.",
+      "24": "I’ve been told by coworkers that I’m too chatty…but what do they know? They’re just Also…like me"
 		},
 		"Task Reminder": {
 			"1": "Let's get started!",
@@ -43,8 +55,9 @@
 		},
 		"Redundant_Ins": {
 			"1": "I have categorized the information into people, roles, or number of hours.",
-			"2": "Would you like to request more information?",
-			"3": "Okay, sounds good. But you can always change your mind and go ahead and make that decision! That’s allowed!! All you have to do is let me know!"
+			"2": "So, what do you think my friend? Are you the rockstar who can already make the decision about the assignments or are you the cool cat that needs some more information before proceeding? ",
+			"3": "Well, I know it’s a lot to think about. It’s OK to take your time. You know, why did the hipster burn his tongue on coffee? Well, because he drank it before it was cool! 😊"
+
 		},
 		"Submit": {
 			"1": "Okay, now that you've seen all the information I have, it's time to submit your final decisions!",
