@@ -5,6 +5,8 @@ var triggerEnterKeyEvent = true
 var sessionDictData = {}
 var currentClue = {}
 var isPersonFirst = true
+var isRolesFirst = true
+var isHoursFirst = true
 $(document).ready(function () {
     //alert(localStorage.getItem("sessionId"))
 
@@ -164,14 +166,16 @@ $(document).ready(function () {
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
                 // $('#topic').val('Person')
                 // $('#index').val('0')
-
+                if (isPersonFirst) {
+                isPersonFirst = false;
                 addMessage('bot', $("#condition").val(), 'Not so fast!');
                 addMessage('bot', $("#condition").val(), 'Knock Knock');
                 addMessage('user', $("#condition").val(), 'who is there?')
                 addMessage('bot', $("#condition").val(), 'Déja');
                 addMessage('user', $("#condition").val(), 'Déja who?')
                 addMessage('bot', $("#condition").val(), 'Knock Knock');
-                addMessage('bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters. ');
+                addMessage('bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters.');
+                }
                 addActionBlock(userActionBlock)
 
             });
@@ -462,12 +466,16 @@ $(document).ready(function () {
                 var navItems = []
                 navItems = ["Network <br /> Architect", "Systems <br /> Analyst", "Cybersecurity <br /> Specialist", "Database <br /> Administrator"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'roles')
+                if(isRolesFirst)
+                {
+                  isRolesFirst = false;
                 addMessage('bot', $("#condition").val(), 'Before I give you a clue, I have a question. ');
                 addMessage('user', $("#condition").val(), 'Yes?')
                 addMessage('bot', $("#condition").val(), 'Do you know why the project manager crossed the road? '); 
                 addMessage('user', $("#condition").val(), 'Why?')
                 addMessage('bot', $("#condition").val(), 'Because the client refused to meet her halfway 😃😃😃');
                 addMessage('bot', $("#condition").val(), 'haha – am I not the funniest?  ');
+                }
                 addActionBlock(userActionBlock)
             });
 
@@ -744,12 +752,17 @@ $(document).ready(function () {
                 addMessage('bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.');
                 var navItems = []
                 navItems = ["6", "8", "10", "12"]
-                userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')
+                userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')\
+                
+            if(isHoursFirst) 
+            {
+                isHoursFirst = false;
                 addMessage('bot', $("#condition").val(), 'Wait a moment – do you have time for a brief diversion?');
                 addMessage('user', $("#condition").val(), 'Yes?')
                 addMessage('bot', $("#condition").val(), 'Do you know why I am your project AI now?  '); 
                 addMessage('user', $("#condition").val(), 'Why?')
                 addMessage('bot', $("#condition").val(), 'because, I was fired from the clock-making factory after all the extra hours I put in. 😢😜');
+            }
                 addActionBlock(userActionBlock)
             });
 
