@@ -174,7 +174,7 @@ $(document).ready(function () {
                 addMessage('bot', $("#condition").val(), 'Déja');
                 addMessage('user', $("#condition").val(), 'Déja who?')
                 addMessage('bot', $("#condition").val(), 'Knock Knock');
-                addMessage('bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters.');
+                addMessage('bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters. ');
                 }
                 addActionBlock(userActionBlock)
 
@@ -752,17 +752,16 @@ $(document).ready(function () {
                 addMessage('bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.');
                 var navItems = []
                 navItems = ["6", "8", "10", "12"]
-                userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')\
-                
-            if(isHoursFirst) 
-            {
-                isHoursFirst = false;
+                userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')
+                if(isHoursFirst) 
+                {
+                    isHoursFirst = false;
                 addMessage('bot', $("#condition").val(), 'Wait a moment – do you have time for a brief diversion?');
                 addMessage('user', $("#condition").val(), 'Yes?')
                 addMessage('bot', $("#condition").val(), 'Do you know why I am your project AI now?  '); 
                 addMessage('user', $("#condition").val(), 'Why?')
                 addMessage('bot', $("#condition").val(), 'because, I was fired from the clock-making factory after all the extra hours I put in. 😢😜');
-            }
+                }
                 addActionBlock(userActionBlock)
             });
 
