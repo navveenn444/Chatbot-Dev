@@ -162,8 +162,8 @@ $(document).ready(function () {
                 var navItems = []
                 navItems = ["Alex", "Leon", "Rachel", "Tina"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
-                $('#topic').val('Person')
-                $('#index').val('0')
+                // $('#topic').val('Person')
+                // $('#index').val('0')
 
                 addMessage('bot', $("#condition").val(), 'Not so fast!');
                 addMessage('bot', $("#condition").val(), 'Knock Knock');
