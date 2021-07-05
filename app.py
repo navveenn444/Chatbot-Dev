@@ -56,7 +56,7 @@ class Chatbot:
                 data = [self.jsonData[condition][topic][index]]
         else:
             topics = ['Introduction','Tutorial','Task Reminder','Clue_Ins','Clue','Clue_End_Ins','Redundant_Ins','Redundant','Submit','Conclusion']
-            if(topic != 'Clue' and topic != 'Redundant' and topic != 'Person'):
+            if(topic != 'Clue' and topic != 'Redundant'):
                 if( (str(int(index)+1) not in self.jsonData[condition][topic]) ):
                     topic = topics[topics.index(topic)+1]
                     index = "0"

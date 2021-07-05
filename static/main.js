@@ -1427,11 +1427,11 @@ $(document).ready(function () {
             $("#nextButton").show()
             message = response["botResponse"][0];
         }
-        else if (response['topic'] == 'Person' && response['index'] == '5' && response['condition'][0] == 'H') {
-            triggerEnterKeyEvent = true
-            var cls = '.' + message.toLowerCase();
-            $(cls).click();
-        }
+        // else if (response['topic'] == 'Person' && response['index'] == '5' && response['condition'][0] == 'H') {
+        //     triggerEnterKeyEvent = true
+        //     var cls = '.' + message.toLowerCase();
+        //     $(cls).click();
+        // }
         else if (response['topic'] == 'Redundant_Ins' && response['index'] == '2' && response['condition'][0] == 'H') {
             var navItems = []
             navItems = ["Yes, I would like <br /> to request specific information.", "No, I'm ready to make <br /> my final decisions."]
