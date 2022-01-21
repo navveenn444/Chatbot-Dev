@@ -1433,6 +1433,83 @@ $(document).ready(function () {
             $('#index').val('5');
             triggerEnterKeyEvent = true
         }
+
+        //Chaitanya for fixed responses - START
+        // response['condition'][0] == 'H')
+        else if (response['topic']=='Introduction' && response['index'] == '3' && ( (response['condition'] == 'HHHC')||(response['condition'] == 'HHLC'))){
+            var navItems = []
+            navItems = ["It is nice to meet you too!"]
+            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'niceToMeet')
+            message = response["botResponse"][0]
+            triggerEnterKeyEvent = false
+            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
+            $("#nextButton").hide() // change to show if you want to  see the next button
+            istriggerEnterKeyEventActive = false
+
+        }
+        else if (response['topic']=='Introduction' && response['index'] == '7' && response['condition'][0] == 'H'){
+            var navItems = []
+            navItems = ["Yes"]
+            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'responseYes')
+            message = response["botResponse"][0]
+            triggerEnterKeyEvent = false
+            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
+            $("#nextButton").hide() // change to show if you want to  see the next button
+            istriggerEnterKeyEventActive = false
+
+        }
+
+        else if (response['topic']=='Tutorial' && response['index'] == '3' && response['condition'][0] == 'H'){
+            var navItems = []
+            navItems = ["Sound great!"]
+            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'soundsGreat')
+            message = response["botResponse"][0]
+            triggerEnterKeyEvent = false
+            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
+            $("#nextButton").hide() // change to show if you want to  see the next button
+            istriggerEnterKeyEventActive = false
+
+        }
+
+        else if (response['topic']=='Tutorial' && response['index'] == '4' && response['condition'][0] == 'H'){
+            var navItems = []
+            navItems = ["Yes! Let's do it."]
+            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'letsDo')
+            message = response["botResponse"][0]
+            triggerEnterKeyEvent = false
+            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
+            $("#nextButton").hide() // change to show if you want to  see the next button
+            istriggerEnterKeyEventActive = false
+
+        }
+        
+        else if (response['topic']=='Tutorial' && response['index'] == '23' && response['condition'][0] == 'H'){
+            var navItems = []
+            navItems = ["Yes! Let's GO."]
+            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'letsDo')
+            message = response["botResponse"][0]
+            triggerEnterKeyEvent = false
+            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
+            $("#nextButton").hide() // change to show if you want to  see the next button
+            istriggerEnterKeyEventActive = false
+
+        }
+
+        else if (response['topic']=='Task Reminder' && response['index'] == '2' && response['condition'][0] == 'H'){
+            var navItems = []
+            navItems = ["Got it!"]
+            userActionBlock = fixedUserResponseButtonsGroup(navItems, response['condition'], 'letsDo')
+            message = response["botResponse"][0]
+            triggerEnterKeyEvent = false
+            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
+            $("#nextButton").hide() // change to show if you want to  see the next button
+            istriggerEnterKeyEventActive = false
+
+        }
+
+
+     //Chaitanya for fixed responses - END
+
         else if (response['topic'] == 'Clue_End_Ins') {
             triggerEnterKeyEvent = true
             $("#nextButton").attr("disabled", false);
@@ -1487,6 +1564,10 @@ $(document).ready(function () {
 
         else {
             message = response["botResponse"][0];
+            triggerEnterKeyEvent = false
+            $("#nextButton").attr("disabled", true); // put this to  false if you don't want next button to be clicked
+            $("#nextButton").show() // change to show if you want to  see the next button
+            istriggerEnterKeyEventActive = false
         }
         if (response['topic'] == 'Clue') {
 
@@ -1701,6 +1782,7 @@ $(document).ready(function () {
                 //}
 
             }
+            
             else if (type == 'redundantConfirmation') {
                 if (i == 0) {
                     html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:10px">`
@@ -1802,6 +1884,59 @@ $(document).ready(function () {
                     html += `<button type="button" class="btn btn-secondary twelve" style="font-size:10px">`
                 }
             }
+
+            html += content[i]
+            html += `</button></div>`
+        }
+
+        html += `</div></div></div></div>`
+
+        return html;
+    }
+    
+    // Function for fixed used response buttons  
+    function fixedUserResponseButtonsGroup(content, condition, type, explanationBlock) {
+        var html = ''
+        html += `<div class='actionBlock' style="margin: 26px 0 26px;overflow: hidden;">
+                        <div style="display: inline-block;text-align: right;width: 100%;">
+                            <div style="display: inline-block;">
+                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">`
+        for (var i = 0; i < content.length; i++) {
+            html += `<div class="btn-group btn-group-sm mr-2" role="group" aria-label="First group">`
+            if (type == 'clueSelection') {
+                if (i == 0) {
+                    html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:10px">`
+                }
+                else if (i == 1) {
+                    html += `<button type="button" class="btn btn-secondary showMatrixGrid" style="font-size:10px">`
+                }
+
+
+            }
+            // chaitanya fixed reponse buttons
+
+            else if (type == 'niceToMeet') {
+                html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:20px">`
+            }
+            /*else if (type == 'niceToMeet') {
+            var msg = 'Nice To Meet You'
+            html += `<div class='user_msg_div'><div class='user_msg_img'><img src='../static/images/user.png' alt='Avatar' style='width:100%;'></div><div class='user_msg_main_div'><p style='word-wrap: break-word'><button type='button' class='btn btn-secondary' style='font-size:10px'>" + msg + "</button></p></div></div>`
+            }*/
+
+            else if (type == 'responseYes') {
+                html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:20px">`
+            }
+
+            else if (type == 'soundsGreat') {
+                html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:20px">`
+            }
+
+            else if (type == 'letsDo') {
+                html += `<button type="button" class="btn btn-secondary showNextClue" style="font-size:20px">`
+            }
+
+            //chaitu - end
+ 
 
             html += content[i]
             html += `</button></div>`
@@ -2184,6 +2319,7 @@ $(document).ready(function () {
         var html = '';
         if (type == 'user') {
             html = "<div class='user_msg_div'><div class='user_msg_img'><img src='../static/images/user.png' alt='Avatar' style='width:100%;'></div><div class='user_msg_main_div'><p style='word-wrap: break-word'>" + message + "</p></div></div>"
+            //html = "<div class='user_msg_div'><div class='user_msg_img'><img src='../static/images/user.png' alt='Avatar' style='width:100%;'></div><div class='user_msg_main_div'><p style='word-wrap: break-word'><button type='button' class='btn btn-secondary showNextClue' style='font-size:10px'>" + message + "</button></p></div></div>"
         }
         else if (type == 'bot') {
             if (condition[1] == 'H') {
