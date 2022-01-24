@@ -170,13 +170,15 @@ $(document).ready(function () {
                 isPersonFirst = false;
                 addMessage('bot', $("#condition").val(), 'Not so fast!');
                 addMessage('bot', $("#condition").val(), 'Knock Knock');
-                addMessage('user', $("#condition").val(), 'Who is there?')
-                addMessage('bot', $("#condition").val(), 'Déja');
-                addMessage('user', $("#condition").val(), 'Déja who?')
-                addMessage('bot', $("#condition").val(), 'Knock Knock');
-                addMessage('bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters. ');
-                }
-                addActionBlock(userActionBlock)
+                addInteractiveMessage('user-btn', "hk1", 'who is there?')
+
+                $(document.body).on("click", ".hk1", function () {
+                    addMessage('bot', $("#condition").val(), 'Déja');
+                    addInteractiveMessage('user-btn', "hk2", 'Déja who?')
+                    $(document.body).on("click", ".hk2", function () {
+                        addMessage('bot', $("#condition").val(), 'Knock Knock');
+                        addMessage('bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters. ');
+                        addActionBlock(userActionBlock)
 
             });
 
@@ -470,12 +472,15 @@ $(document).ready(function () {
                 {
                   isRolesFirst = false;
                 addMessage('bot', $("#condition").val(), 'Before I give you a clue, I have a question. ');
-                addMessage('user', $("#condition").val(), 'Yes?')
+                addInteractiveMessage('user-btn', "hk3", 'Yes?')
+				$(document.body).on("click", ".hk3", function () {
+				
                 addMessage('bot', $("#condition").val(), 'Do you know why the project manager crossed the road? '); 
-                addMessage('user', $("#condition").val(), 'Why?')
+                addInteractiveMessage('user-btn', "hk4", 'Why?')
+                    $(document.body).on("click", ".hk4", function () {
                 addMessage('bot', $("#condition").val(), 'Because the client refused to meet her halfway 😃😃😃');
                 addMessage('bot', $("#condition").val(), 'haha – am I not the funniest?  ');
-                }
+                
                 addActionBlock(userActionBlock)
             });
 
@@ -2185,6 +2190,11 @@ $(document).ready(function () {
         if (type == 'user') {
             html = "<div class='user_msg_div'><div class='user_msg_img'><img src='../static/images/user.png' alt='Avatar' style='width:100%;'></div><div class='user_msg_main_div'><p style='word-wrap: break-word'>" + message + "</p></div></div>"
         }
+        
+        else  if (type == 'user-btn') {
+            html = "<div class='user_msg_div'><div class='user_msg_img'><img src='../static/images/user.png' alt='Avatar' style='width:100%;'></div><div class='user_msg_main_div'><p style='word-wrap: break-word'><button type='button' class='btn btn-secondary showNextClue' style='font-size:10px'>" + message + "</button></p></div></div>"
+        
+        }
         else if (type == 'bot') {
             if (condition[1] == 'H') {
                 html = "<div class='bot_msg_div'><div class='bot_msg_img'><img src='../static/images/pic1.jpg' alt='Avatar' style='width:100%;border-radius: 70%;'></div><div class='bot_msg_main_div'><div class='bot_msg_inner_div'><p style='word-wrap: break-word;background: #f0ecda'>" + message + "</p></div></div></div>"
@@ -2206,7 +2216,16 @@ $(document).ready(function () {
         var element = document.getElementById("chatDiv");
         element.scrollTop = element.scrollHeight;
     }
+    function addInteractiveMessage(type,classTag,message) {
+        var html = '';
+         if (type == 'user-btn') {
+            html = "<div class='user_msg_div'><div class='user_msg_img'><img src='../static/images/user.png' alt='Avatar' style='width:100%;'></div><div class='user_msg_main_div'><div class='submit_msg_inner_div'><p style='word-wrap: break-word'><button type='button' class='btn btn-secondary "+classTag+"' style='font-size:10px'>" + message + "</button></p></div></div></div>"
+        }
 
+        $('#chatDiv').append(html)
+        var element = document.getElementById("chatDiv");
+        element.scrollTop = element.scrollHeight;
+    }
     function addActionBlock(content) {
         $('#chatDiv').append(content)
         var element = document.getElementById("chatDiv");
