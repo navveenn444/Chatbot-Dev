@@ -170,7 +170,7 @@ $(document).ready(function () {
                 isPersonFirst = false;
                 addMessage('bot', $("#condition").val(), 'Not so fast!');
                 addMessage('bot', $("#condition").val(), 'Knock Knock');
-                addMessage('user', $("#condition").val(), 'who is there?')
+                addMessage('user', $("#condition").val(), 'Who is there?')
                 addMessage('bot', $("#condition").val(), 'Déja');
                 addMessage('user', $("#condition").val(), 'Déja who?')
                 addMessage('bot', $("#condition").val(), 'Knock Knock');
