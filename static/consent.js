@@ -32,15 +32,14 @@ $(document).ready(function () {
         if (uid.length > 0) {
             $("#uidError").hide()
             for (var i = 0; i < uid.length; i++) {
-                if ((uid.charCodeAt(i) >= 97 && uid.charCodeAt(i) <= 122)||(uid.charCodeAt(i) >= 65 && uid.charCodeAt(i) <= 90)||(uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57)) {
-                        $("#uidValidError").hide()
-                    }
+                if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57) {
+                    $("#uidValidError").hide()
+                }
                 else {
-                    $("#uidValidError").show() 
+                    $("#uidValidError").hide()
                     break;
-                    }
+                }
             }
-        
         }
         else {
             $("#uidError").show()
@@ -56,7 +55,7 @@ $(document).ready(function () {
         var uid = $('#participantUid').val().trim();
         console.log("participant", $('#participantUid'))
         console.log("uid", uid)
-        var isUidValid = false
+        var isUidValid = true
         var isAllValid = false
         var option = $("input[type=radio][name=optradio]:checked").val()
         
@@ -64,14 +63,13 @@ $(document).ready(function () {
             if (!isAllValid) {
                 var isnameAvailable = false
                 var isuidAvailable = false
-                // Validating the Mturk Id if it is 14 digit alphanumeric 
-                if (uid.length == 14) {
+                if (uid.length == 8) {
                     for (var i = 0; i < uid.length; i++) {
-                        if ((uid.charCodeAt(i) >= 97 && uid.charCodeAt(i) <= 122)||(uid.charCodeAt(i) >= 65 && uid.charCodeAt(i) <= 90)||(uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57)) {
+                        if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57 ) {
                             isUidValid = true
                         }
                         else {
-                            isUidValid = false;
+                            isUidValid = true;
                             break;
                         }
                     }
@@ -91,11 +89,11 @@ $(document).ready(function () {
                 else {
                     isuidAvailable = true
                 }
-                if (isUidValid) {
-                    $("#uidValidError").hide()
+                if (!isUidValid) {
+                    $("#uidValidError").show()
                 }
                 else {
-                    $("#uidValidError").show()
+                    $("#uidValidError").hide()
                 }
 
                 if (isnameAvailable && isuidAvailable && isUidValid) {
