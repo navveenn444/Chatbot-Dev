@@ -4,9 +4,20 @@ var tutorialMsgs = []
 var triggerEnterKeyEvent = true
 var sessionDictData = {}
 var currentClue = {}
-var isPersonFirst = true
+var isPersonFirst = false
+var  isPersonClicked = false
 var isRolesFirst = true
 var isHoursFirst = true
+var isPerson5Data = [
+    ['bot', $("#condition").val(), 'Knock Knock'],
+    ['user', $("#condition").val(), 'who is there?'],
+    ['bot', $("#condition").val(), 'Déja'],
+    ['user', $("#condition").val(), 'Déja who?'],
+    ['bot', $("#condition").val(), 'Knock Knock'],
+    ['bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters. '],
+    ['bot', $("#condition").val(), 'Specific information for 4 personnel is available. Select the team member for which information is requested.']
+]
+var isPerson5DataIndex = 0;
 $(document).ready(function () {
     //alert(localStorage.getItem("sessionId"))
 
@@ -99,7 +110,22 @@ $(document).ready(function () {
 
             $("#nextButton").click(function (e) {
                 triggerEnterKeyEvent = false;
-                getDataEvent();
+                if (((isPersonFirst) && $('#condition').val() == 'HHHC' || (isPersonFirst) && $('#condition').val() == 'HHLC') && isPerson5DataIndex < isPerson5Data.length && isPersonClicked) {
+                    console.log('herer')
+                    addMessage(isPerson5Data[isPerson5DataIndex][0], isPerson5Data[isPerson5DataIndex][1], isPerson5Data[isPerson5DataIndex][2])
+                    isPerson5DataIndex = isPerson5DataIndex + 1;
+                    if (isPerson5DataIndex === isPerson5Data.length) {
+                        var navItems = []
+                        navItems = ["Alex", "Leon", "Rachel", "Tina"]
+                        userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
+                        addActionBlock(userActionBlock)
+                        isPersonFirst = false;
+                    }
+                } else {
+                    isPerson5DataIndex = 0;
+                    isPersonFirst = false;
+                    getDataEvent();
+                }
             });
 
             $(document.body).on("click", ".showNextClue", function () {
@@ -160,25 +186,54 @@ $(document).ready(function () {
                 var element = document.getElementById("chatDiv");
                 element.removeChild(element.childNodes[element.childNodes.length - 1]);
                 addMessage('user', $("#condition").val(), message)
+                //addMessage('bot', $("#condition").val(), 'Specific information for 4 personnel is available. Select the team member for which information is requested.');
+                //var navItems = []
+                //navItems = ["Alex", "Leon", "Rachel", "Tina"]
+                //userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
+                // $('#topic').val('Person')
+                // $('#index').val('0')
+                if (isPersonClicked) {
+                    isPersonFirst = true    
+                }
+                isPerson5DataIndex = 0
+                if (((isPersonFirst) && $('#condition').val() == 'HHHC' || (isPersonFirst) && $('#condition').val() == 'HHLC') && !isPersonClicked) {
+                isPersonClicked = true
+                $("#nextButton").attr("disabled", false);
+                $("#nextButton").show();
+                //getperson();
+                // $("#nextButton").click(function (e) {
+                //     triggerEnterKeyEvent = false;
+                //     addMessage('bot', $("#condition").val(), 'Not so fast!');
+                // });
+                // $("#nextButton").click(function (e) {
+                //     triggerEnterKeyEvent = false;
+                //     addMessage('bot', $("#condition").val(), 'Not so fast!');
+                // });
+                addMessage('bot', $("#condition").val(), 'Not so fast!');
+                
+                }
+                else {
                 addMessage('bot', $("#condition").val(), 'Specific information for 4 personnel is available. Select the team member for which information is requested.');
                 var navItems = []
                 navItems = ["Alex", "Leon", "Rachel", "Tina"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
-                // $('#topic').val('Person')
-                // $('#index').val('0')
-                if (isPersonFirst) {
-                isPersonFirst = false;
-                addMessage('bot', $("#condition").val(), 'Not so fast!');
-                addMessage('bot', $("#condition").val(), 'Knock Knock');
-                addMessage('user', $("#condition").val(), 'who is there?')
-                addMessage('bot', $("#condition").val(), 'Déja');
-                addMessage('user', $("#condition").val(), 'Déja who?')
-                addMessage('bot', $("#condition").val(), 'Knock Knock');
-                addMessage('bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters. ');
-                }
                 addActionBlock(userActionBlock)
+                }
+                // else{
+                //     addActionBlock(userActionBlock)
+                // }
+                //addActionBlock(userActionBlock)
 
             });
+        
+            // function getperson() {
+            //     if(i==1)
+            //     {
+            //     addMessage('bot', $("#condition").val(), 'Not so fast!');
+            //     $("#nextButton").attr("disabled", false);
+            //     $("#nextButton").show();
+            //     }
+            // };
 
             $(document.body).on('click', '.alex', function (event) {
                 var message = getButtonText('alex')
@@ -466,7 +521,7 @@ $(document).ready(function () {
                 var navItems = []
                 navItems = ["Network <br /> Architect", "Systems <br /> Analyst", "Cybersecurity <br /> Specialist", "Database <br /> Administrator"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'roles')
-                if(isRolesFirst)
+                if ((isRolesFirst) && $('#condition').val() == 'HHHC' || (isRolesFirst) && $('#condition').val() == 'HHLC') 
                 {
                   isRolesFirst = false;
                 addMessage('bot', $("#condition").val(), 'Before I give you a clue, I have a question. ');
@@ -753,7 +808,7 @@ $(document).ready(function () {
                 var navItems = []
                 navItems = ["6", "8", "10", "12"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')
-                if(isHoursFirst) 
+                if ((isHoursFirst) && $('#condition').val() == 'HHHC' || (isHoursFirst) && $('#condition').val() == 'HHLC') 
                 {
                     isHoursFirst = false;
                 addMessage('bot', $("#condition").val(), 'Wait a moment – do you have time for a brief diversion?');
