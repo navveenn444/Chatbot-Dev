@@ -5,9 +5,11 @@ var triggerEnterKeyEvent = true
 var sessionDictData = {}
 var currentClue = {}
 var isPersonFirst = false
-var  isPersonClicked = false
-var isRolesFirst = true
-var isHoursFirst = true
+var isPersonClicked = false
+var isRolesFirst = false
+var isRolesClicked = false
+var isHoursFirst = false
+var isHoursClicked = false
 var isPerson5Data = [
     ['bot', $("#condition").val(), 'Knock Knock'],
     ['user', $("#condition").val(), 'who is there?'],
@@ -17,7 +19,25 @@ var isPerson5Data = [
     ['bot', $("#condition").val(), 'Ok, enough comedy. On to more serious matters. '],
     ['bot', $("#condition").val(), 'Specific information for 4 personnel is available. Select the team member for which information is requested.']
 ]
+var isRoles5Data = [
+    ['user', $("#condition").val(), 'Yes?'],
+    ['bot', $("#condition").val(), 'Do you know why the project manager crossed the road? '],
+    ['user', $("#condition").val(), 'Why?'],
+    ['bot', $("#condition").val(), 'Because the client refused to meet her halfway 😃😃😃'],
+    ['bot', $("#condition").val(), 'haha – am I not the funniest? '],
+    ['bot', $("#condition").val(), 'Specific information for 4 of the project roles is available. Select the position for which information is requested.']
+]
+var isHours5Data = [
+    ['user', $("#condition").val(), 'Yes?'],
+    ['bot', $("#condition").val(), 'Do you know why I am your project AI now?  '],
+    ['user', $("#condition").val(), 'Why?'],
+    ['bot', $("#condition").val(), 'because, I was fired from the clock-making factory after all the extra hours I put in. 😢😜'],
+    ['bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.']
+]
+
 var isPerson5DataIndex = 0;
+var isRoles5DataIndex = 0;
+var isHours5DataIndex = 0;
 $(document).ready(function () {
     //alert(localStorage.getItem("sessionId"))
 
@@ -108,6 +128,26 @@ $(document).ready(function () {
             });
 
 
+            // $("#nextButton").click(function (e) {
+            //     triggerEnterKeyEvent = false;
+            //     if (((isPersonFirst) && $('#condition').val() == 'HHHC' || (isPersonFirst) && $('#condition').val() == 'HHLC') && isPerson5DataIndex < isPerson5Data.length && isPersonClicked) {
+            //         console.log('herer')
+            //         addMessage(isPerson5Data[isPerson5DataIndex][0], isPerson5Data[isPerson5DataIndex][1], isPerson5Data[isPerson5DataIndex][2])
+            //         isPerson5DataIndex = isPerson5DataIndex + 1;
+            //         if (isPerson5DataIndex === isPerson5Data.length) {
+            //             var navItems = []
+            //             navItems = ["Alex", "Leon", "Rachel", "Tina"]
+            //             userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
+            //             addActionBlock(userActionBlock)
+            //             isPersonFirst = false;
+            //         }
+            //     } else {
+            //         isPerson5DataIndex = 0;
+            //         isPersonFirst = false;
+            //         getDataEvent();
+            //     }
+            // });
+
             $("#nextButton").click(function (e) {
                 triggerEnterKeyEvent = false;
                 if (((isPersonFirst) && $('#condition').val() == 'HHHC' || (isPersonFirst) && $('#condition').val() == 'HHLC') && isPerson5DataIndex < isPerson5Data.length && isPersonClicked) {
@@ -121,12 +161,42 @@ $(document).ready(function () {
                         addActionBlock(userActionBlock)
                         isPersonFirst = false;
                     }
-                } else {
+                }
+				else if (((isRolesFirst) && $('#condition').val() == 'HHHC' || (isRolesFirst) && $('#condition').val() == 'HHLC') && isRoles5DataIndex < isRoles5Data.length && isRolesClicked) {
+                    console.log('herer')
+                    addMessage(isRoles5Data[isRoles5DataIndex][0], isRoles5Data[isRoles5DataIndex][1], isRoles5Data[isRoles5DataIndex][2])
+                    isRoles5DataIndex = isRoles5DataIndex + 1;
+                    if (isRoles5DataIndex === isRoles5Data.length) {
+                        var navItems = []
+                       navItems = ["Network <br /> Architect", "Systems <br /> Analyst", "Cybersecurity <br /> Specialist", "Database <br /> Administrator"]
+                        userActionBlock = buildUserActionButtonGroup(navItems, condition, 'roles')
+                        addActionBlock(userActionBlock)
+                        isRolesFirst = false;
+                    }
+                } 
+				else if (((isHoursFirst) && $('#condition').val() == 'HHHC' || (isHoursFirst) && $('#condition').val() == 'HHLC') && isHours5DataIndex < isHours5Data.length && isHoursClicked) {
+                    console.log('herer')
+                    addMessage(isHours5Data[isHours5DataIndex][0], isHours5Data[isHours5DataIndex][1], isHours5Data[isHours5DataIndex][2])
+                    isHours5DataIndex = isHours5DataIndex + 1;
+                    if (isHours5DataIndex === isHours5Data.length) {
+                        var navItems = []
+                        navItems = ["6", "8", "10", "12"]
+                        userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')
+                        addActionBlock(userActionBlock)
+                        isHoursFirst = false;
+                    }
+                } 
+				else {
                     isPerson5DataIndex = 0;
+                    isRoles5DataIndex = 0;
+                    isHours5DataIndex = 0;
                     isPersonFirst = false;
+                    isRolesFirst = false;
+                    isHoursFirst = false;
                     getDataEvent();
                 }
             });
+
 
             $(document.body).on("click", ".showNextClue", function () {
                 var message = getButtonText('showNextClue')
@@ -192,7 +262,7 @@ $(document).ready(function () {
                 //userActionBlock = buildUserActionButtonGroup(navItems, condition, 'person')
                 // $('#topic').val('Person')
                 // $('#index').val('0')
-                if (isPersonClicked) {
+                if (!isPersonClicked) {
                     isPersonFirst = true    
                 }
                 isPerson5DataIndex = 0
@@ -512,26 +582,54 @@ $(document).ready(function () {
                 }
             });
 
+            // $(document.body).on('click', '.roles', function (event) {
+            //     var message = getButtonText('roles')
+            //     var element = document.getElementById("chatDiv");
+            //     element.removeChild(element.childNodes[element.childNodes.length - 1]);
+            //     addMessage('user', $("#condition").val(), message)
+            //     addMessage('bot', $("#condition").val(), 'Specific information for 4 of the project roles is available. Select the position for which information is requested.');
+            //     var navItems = []
+            //     navItems = ["Network <br /> Architect", "Systems <br /> Analyst", "Cybersecurity <br /> Specialist", "Database <br /> Administrator"]
+            //     userActionBlock = buildUserActionButtonGroup(navItems, condition, 'roles')
+            //     if ((isRolesFirst) && $('#condition').val() == 'HHHC' || (isRolesFirst) && $('#condition').val() == 'HHLC') 
+            //     {
+            //       isRolesFirst = false;
+            //     addMessage('bot', $("#condition").val(), 'Before I give you a clue, I have a question. ');
+            //     addMessage('user', $("#condition").val(), 'Yes?')
+            //     addMessage('bot', $("#condition").val(), 'Do you know why the project manager crossed the road? '); 
+            //     addMessage('user', $("#condition").val(), 'Why?')
+            //     addMessage('bot', $("#condition").val(), 'Because the client refused to meet her halfway 😃😃😃');
+            //     addMessage('bot', $("#condition").val(), 'haha – am I not the funniest?  ');
+            //     }
+            //     addActionBlock(userActionBlock)
+            // });
+
             $(document.body).on('click', '.roles', function (event) {
                 var message = getButtonText('roles')
                 var element = document.getElementById("chatDiv");
                 element.removeChild(element.childNodes[element.childNodes.length - 1]);
                 addMessage('user', $("#condition").val(), message)
-                addMessage('bot', $("#condition").val(), 'Specific information for 4 of the project roles is available. Select the position for which information is requested.');
+				
+				if (!isRolesClicked) {
+                    isRolesFirst = true    
+                }
+                isRoles5DataIndex = 0
+                
+                if (((isRolesFirst) && $('#condition').val() == 'HHHC' || (isRolesFirst) && $('#condition').val() == 'HHLC') && !isRolesClicked)
+                {
+                    isRolesClicked = true;
+                  $("#nextButton").attr("disabled", false);
+                  $("#nextButton").show();
+                addMessage('bot', $("#condition").val(), 'Before I give you a clue, I have a question. ');
+                
+                }
+				else{
+				addMessage('bot', $("#condition").val(), 'Specific information for 4 of the project roles is available. Select the position for which information is requested.');
                 var navItems = []
                 navItems = ["Network <br /> Architect", "Systems <br /> Analyst", "Cybersecurity <br /> Specialist", "Database <br /> Administrator"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'roles')
-                if ((isRolesFirst) && $('#condition').val() == 'HHHC' || (isRolesFirst) && $('#condition').val() == 'HHLC') 
-                {
-                  isRolesFirst = false;
-                addMessage('bot', $("#condition").val(), 'Before I give you a clue, I have a question. ');
-                addMessage('user', $("#condition").val(), 'Yes?')
-                addMessage('bot', $("#condition").val(), 'Do you know why the project manager crossed the road? '); 
-                addMessage('user', $("#condition").val(), 'Why?')
-                addMessage('bot', $("#condition").val(), 'Because the client refused to meet her halfway 😃😃😃');
-                addMessage('bot', $("#condition").val(), 'haha – am I not the funniest?  ');
-                }
                 addActionBlock(userActionBlock)
+				}
             });
 
             $(document.body).on('click', '.networkArchitect', function (event) {
@@ -799,25 +897,52 @@ $(document).ready(function () {
                 }
             });
 
+            // $(document.body).on('click', '.hours', function (event) {
+            //     var message = getButtonText('hours')
+            //     var element = document.getElementById("chatDiv");
+            //     element.removeChild(element.childNodes[element.childNodes.length - 1]);
+            //     addMessage('user', $("#condition").val(), message)
+            //     addMessage('bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.');
+            //     var navItems = []
+            //     navItems = ["6", "8", "10", "12"]
+            //     userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')
+            //     if ((isHoursFirst) && $('#condition').val() == 'HHHC' || (isHoursFirst) && $('#condition').val() == 'HHLC') 
+            //     {
+            //         isHoursFirst = false;
+            //     addMessage('bot', $("#condition").val(), 'Wait a moment – do you have time for a brief diversion?');
+            //     addMessage('user', $("#condition").val(), 'Yes?')
+            //     addMessage('bot', $("#condition").val(), 'Do you know why I am your project AI now?  '); 
+            //     addMessage('user', $("#condition").val(), 'Why?')
+            //     addMessage('bot', $("#condition").val(), 'because, I was fired from the clock-making factory after all the extra hours I put in. 😢😜');
+            //     }
+            //     addActionBlock(userActionBlock)
+            // });
             $(document.body).on('click', '.hours', function (event) {
                 var message = getButtonText('hours')
                 var element = document.getElementById("chatDiv");
                 element.removeChild(element.childNodes[element.childNodes.length - 1]);
                 addMessage('user', $("#condition").val(), message)
-                addMessage('bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.');
+				
+				if (!isHoursClicked) {
+                    isHoursFirst = true    
+                }
+                isPerson5DataIndex = 0
+              
+                if (((isHoursFirst) && $('#condition').val() == 'HHHC' || (isHoursFirst) && $('#condition').val() == 'HHLC') && !isHoursClicked)
+                {
+                 isHoursClicked = true;
+				 $("#nextButton").attr("disabled", false);
+                $("#nextButton").show();
+                addMessage('bot', $("#condition").val(), 'Wait a moment – do you have time for a brief diversion?');
+               
+                }
+				else{
+				addMessage('bot', $("#condition").val(), 'Specific information for 4 of the Number of hours is available. Select the branch for which information is requested.');
                 var navItems = []
                 navItems = ["6", "8", "10", "12"]
                 userActionBlock = buildUserActionButtonGroup(navItems, condition, 'hours')
-                if ((isHoursFirst) && $('#condition').val() == 'HHHC' || (isHoursFirst) && $('#condition').val() == 'HHLC') 
-                {
-                    isHoursFirst = false;
-                addMessage('bot', $("#condition").val(), 'Wait a moment – do you have time for a brief diversion?');
-                addMessage('user', $("#condition").val(), 'Yes?')
-                addMessage('bot', $("#condition").val(), 'Do you know why I am your project AI now?  '); 
-                addMessage('user', $("#condition").val(), 'Why?')
-                addMessage('bot', $("#condition").val(), 'because, I was fired from the clock-making factory after all the extra hours I put in. 😢😜');
-                }
                 addActionBlock(userActionBlock)
+				}
             });
 
             $(document.body).on('click', '.six', function (event) {
