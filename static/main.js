@@ -1346,7 +1346,7 @@ $(document).ready(function () {
                 addThinking('bot', response["condition"])
                 //$("#nextButton").attr("disabled", true);
                 setTimeout(function () {
-                    if (response['condition'][2] == 'H') {
+                    if (response['condition'][2] == 'H' || response['condition'][2] == 'L') {
                         if (response['topic'] == 'Tutorial' && response['index'] == '2') {
                             $('#clickableGrid').show()
                             $('#demoTable').show()
